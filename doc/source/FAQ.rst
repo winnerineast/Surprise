@@ -20,6 +20,26 @@ top-10 prediction for each user.
     :name: top_n_recommendations.py
     :lines: 10-
 
+.. _precision_recall_at_k:
+
+How to compute precision@k and recall@k
+-----------------------------------------------------------------------
+
+Here is an example where we compute Precision@k and Recall@k for each user:
+
+:math:`\text{Precision@k} = \frac{ | \{ \text{Recommended items that are relevant} \} | }{ | \{ \text{Recommended items} \} | }`
+:math:`\text{Recall@k} = \frac{ | \{ \text{Recommended items that are relevant} \} | }{ | \{ \text{Relevant items} \} | }`
+
+An item is considered relevant if its true rating :math:`r_{ui}` is greater
+than a given threshold.  An item is considered recommended if its estimated
+rating :math:`\hat{r}_{ui}` is greater than the threshold, and if it is among
+the k highest estimated ratings.
+
+.. literalinclude:: ../../examples/precision_recall_at_k.py
+    :caption: From file ``examples/precision_recall_at_k.py``
+    :name: precision_recall_at_k.py
+    :lines: 7-
+
 .. _get_k_nearest_neighbors:
 
 How to get the k nearest neighbors of a user (or item)
@@ -162,3 +182,20 @@ done as follows:
     :caption: From file ``examples/split_data_for_unbiased_estimation.py``
     :name: split_data_for_unbiased_estimation.py
     :lines: 10-
+
+How to have reproducible experiments
+------------------------------------
+
+Some algorithms randomly initialize their parameters (sometimes with
+``numpy``), and the cross-validation folds are also randomly generated. If you
+need to reproduce your experiments multiple times, you just have to set the
+seed of the RNG at the beginning of your program:
+
+.. code::
+
+    import random
+    import numpy as np
+
+    my_seed = 0
+    random.seed(my_seed)
+    numpy.random.seed(my_seed)

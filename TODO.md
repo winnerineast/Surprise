@@ -1,8 +1,8 @@
 TODO
 ====
 
+* Allow to change data folder from env variable like scikit learn
 * Allow to discount similarities (see aggarwal)
-* Support conda?
 * Allow incremental updates for some algorithms
 * Profile code (mostly cython) to see what could be optimized
 

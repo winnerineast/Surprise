@@ -39,24 +39,25 @@ You can of course use a custom dataset. `Surprise
 <https://nicolashug.github.io/Surprise/>`_ offers two ways of loading a custom
 dataset:
 
-- you can either specify a single file (or a pandas dataframe) with all the
-  ratings and use the :meth:`split ()<surprise.dataset.DatasetAutoFolds.split>`
-  method to perform cross-validation, or :ref:`train on the whole dataset
+- you can either specify a single file (e.g. a csv file) or a pandas dataframe
+  with all the ratings and use the :meth:`split
+  ()<surprise.dataset.DatasetAutoFolds.split>` method to perform
+  cross-validation, or :ref:`train on the whole dataset
   <train_on_whole_trainset>` ;
 - or if your dataset is already split into predefined folds, you can specify a
   list of files for training and testing.
 
 Either way, you will need to define a :class:`Reader <surprise.dataset.Reader>`
 object for `Surprise <https://nicolashug.github.io/Surprise/>`_ to be able to
-parse the file(s). We'll see now how to handle both cases.
+parse the file(s) or the dataframe. We'll see now how to handle both cases.
 
 .. _load_from_file_example:
 
 Load an entire dataset from a file or a dataframe
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- To load a dataset from a file, you will need the :meth:`load_from_file()
-  <surprise.dataset.Dataset.load_from_file>` method:
+- To load a dataset from a file (e.g. a csv file), you will need the
+  :meth:`load_from_file() <surprise.dataset.Dataset.load_from_file>` method:
 
   .. literalinclude:: ../../examples/load_custom_dataset.py
       :caption: From file ``examples/load_custom_dataset.py``
@@ -183,6 +184,34 @@ For further analysis, we can easily read all the results in a pandas
     :lines: 40-
 
 .. _iterate_over_folds:
+
+.. _grid_search_note:
+.. note::
+
+    Dictionary parameters such as ``bsl_options`` and ``sim_options`` require
+    particular treatment. See usage example below:
+
+    .. parsed-literal::
+
+        param_grid = {'k': [10, 20],
+                      'sim_options': {'name': ['msd', 'cosine'],
+                                      'min_support': [1, 5],
+                                      'user_based': [False]}
+                      }
+
+    Naturally, both can be combined, for example for the
+    :class:`KNNBaseline <surprise.prediction_algorithms.knns.KNNBaseline>`
+    algorithm:
+
+    .. parsed-literal::
+        param_grid = {'bsl_options': {'method': ['als', 'sgd'],
+                                      'reg': [1, 2]},
+                      'k': [2, 3],
+                      'sim_options': {'name': ['msd', 'cosine'],
+                                      'min_support': [1, 5],
+                                      'user_based': [False]}
+                      }
+
 
 Manually iterate over folds
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~

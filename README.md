@@ -1,10 +1,8 @@
 [![GitHub version](https://badge.fury.io/gh/nicolashug%2FSurprise.svg)](https://badge.fury.io/gh/nicolashug%2FSurprise)
 [![Documentation Status](https://readthedocs.org/projects/surprise/badge/?version=stable)](http://surprise.readthedocs.io/en/stable/?badge=stable)
 [![Build Status](https://travis-ci.org/NicolasHug/Surprise.svg?branch=master)](https://travis-ci.org/NicolasHug/Surprise)
-[![python versions](https://img.shields.io/badge/python-2.7%2C%203.5-blue.svg)](http://surpriselib.com)
+[![python versions](https://img.shields.io/badge/python-2.7%2C%203.5%2C%203.6-blue.svg)](http://surpriselib.com)
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
-
-
 
 
 Surprise
@@ -144,20 +142,26 @@ the GNU [time](http://man7.org/linux/man-pages/man1/time.1.html) command.
 | [Slope One](http://surprise.readthedocs.io/en/stable/slope_one.html#surprise.prediction_algorithms.slope_one.SlopeOne)             |  .9065 |  .7144 |    8    |
 | [Co clustering](http://surprise.readthedocs.io/en/stable/co_clustering.html#surprise.prediction_algorithms.co_clustering.CoClustering)             |  .9155 |  .7174 |    2    |
 
-Installation / Usage
---------------------
+Installation
+------------
 
 The easiest way is to use pip (you'll need [numpy](http://www.numpy.org/)):
 
     $ pip install numpy
     $ pip install scikit-surprise
 
-Or you can clone the repo and build the source (you'll need
-[Cython](http://cython.org/) and [numpy](http://www.numpy.org/)):
+If you use conda, you can install the package following [these
+guidelines](https://conda.io/docs/user-guide/getting-started.html#installing-a-package-with-pip)
+(still using pip).
 
+For the latest version, you can also clone the repo and build the source
+(you'll first need [Cython](http://cython.org/) and
+[numpy](http://www.numpy.org/)):
+
+    $ pip install numpy cython
     $ git clone https://github.com/NicolasHug/surprise.git
+    $ cd surprise
     $ python setup.py install
-
 
 License
 -------
@@ -177,14 +181,16 @@ Here is a Bibtex entry if you ever need to cite Surprise in a research paper
     year = {2017}
     }
 
-Acknowledgements:
-----------------
+Contributors
+------------
 
-- [Pierre-François Gimenez](https://github.com/PFgimenez), for his valuable
-  insights on software design.
-- [Maher Malaeb](https://github.com/mahermalaeb), for the
-  [GridSearch](http://surprise.readthedocs.io/en/stable/evaluate.html#surprise.evaluate.GridSearch)
-  implementation.
+The following persons have contributed to [Surprise](http://surpriselib.com):
+
+Charles-Emmanuel Dias, Lukas Galke, Pierre-François Gimenez, Nicolas Hug,
+Hengji Liu,  Maher Malaeb, Naturale0, nju-luke, Skywhat, Mike Lee Williams,
+Chenchen Xu.
+
+Thanks a lot :) !
 
 Contributing, feedback, contact
 -------------------------------
@@ -196,9 +202,9 @@ If you'd like to see some features or algorithms implemented in
 [Surprise](http://surpriselib.com), please let us know!
 
 Please feel free to contribute (see
-[guidelines](https://github.com/NicolasHug/Surprise/blob/master/CONTRIBUTING.md))
+[guidelines](https://github.com/NicolasHug/Surprise/blob/master/.github/CONTRIBUTING.md))
 and send pull requests!
 
-To contact us, send us a [tweet](https://twitter.com/Surpriselib) or mail us at
-contact at nicolas-hug dot com. For any bug or issue, please use
-the GitHub [project page](https://github.com/NicolasHug/Surprise).
+For bugs, issues or questions about [Surprise](http://surpriselib.com), you can
+use the GitHub [project page](https://github.com/NicolasHug/Surprise) (please
+don't send me emails as there would be no record for future users).
