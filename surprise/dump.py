@@ -1,5 +1,5 @@
 """
-The :mod:`dump` module defines the :func:`dump` function.
+The :mod:`dump <surprise.dump>` module defines the :func:`dump` function.
 """
 
 import pickle
@@ -27,7 +27,8 @@ def dump(file_name, predictions=None, algo=None, verbose=0):
     dump_obj = {'predictions': predictions,
                 'algo': algo
                 }
-    pickle.dump(dump_obj, open(file_name, 'wb'))
+    pickle.dump(dump_obj, open(file_name, 'wb'),
+                protocol=pickle.HIGHEST_PROTOCOL)
 
     if verbose:
         print('The dump has been saved as file', file_name)
